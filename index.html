@@ -223,7 +223,7 @@
                 <li><strong>How can modules change capability?</strong> Interchangeable mechanical cells and electronic “lids” could allow local control with shared power.</li>
               </ul>
             </details>
-            <p class="credits reveal">With Paul Ducarme and Lucia Stein-Montalvo · PI: Nivedita Arora · <span class="chip">Manuscript in preparation</span></p>
+            <p class="credits reveal">With Paul Ducarme and Lucia Stein-Montalvo · PI: Nivedita Arora · <span class="chip chip-accent">First author</span> <span class="chip">Manuscript in preparation</span></p>
           </div>
         </article>
 
@@ -414,7 +414,7 @@
             <div class="pub-side"><span class="chip">In preparation</span><span class="pub-venue">Manuscript</span></div>
             <div class="pub-main">
               <h3>Manuscript on BEAMbot, covering bistable mechanics, electromagnetic switching and modular locomotion</h3>
-              <p class="authors">VAK Embodied Systems Lab, Northwestern University. Team: Paul Ducarme, <strong>Xuanang Chen</strong>, Lucia Stein-Montalvo; PI: Nivedita Arora</p>
+              <p class="authors"><strong>Xuanang Chen</strong> (first author), Paul Ducarme, Lucia Stein-Montalvo; PI: Nivedita Arora. VAK Embodied Systems Lab, Northwestern University</p>
               <p class="pub-links"><a href="https://embodiedsystem.com/beambot/" target="_blank" rel="noopener noreferrer">Project page ↗</a> <a href="#beambot">Progress video</a></p>
             </div>
           </li>
@@ -436,22 +436,49 @@
         <div class="section-head split">
           <div>
             <p class="eyebrow"><span class="eyebrow-no">03</span>How I work</p>
-            <h2 id="approach-title">Design, fabricate, measure, then ask why it&nbsp;works.</h2>
+            <h2 id="approach-title">Design, fabricate, measure, then ask&nbsp;why.</h2>
           </div>
-          <p class="section-note">My training runs from mechatronics through electrical engineering to mechanics. Each project uses all of it, in a loop.</p>
+          <p class="section-note">Mechatronics, electrical engineering and mechanics, used together in one loop.</p>
         </div>
-        <ol class="loop">
-          <li class="loop-step reveal"><span class="loop-no">01</span><h3>Design the mechanism</h3><p>I choose geometry, compliance and stable states so the body does work that a controller would otherwise have to do.</p><p class="tools">SolidWorks · Inventor · MATLAB kinematics &amp; optimization</p></li>
-          <li class="loop-step reveal"><span class="loop-no">02</span><h3>Fabricate to learn</h3><p>Vacuum forming, laser cutting, heat bonding, 3D printing and casting give fast loops that expose what idealized models leave out.</p><p class="tools">Thermoforming · Laser cutting · FDM &amp; resin printing · TPU-fabric bonding</p></li>
-          <li class="loop-step reveal"><span class="loop-no">03</span><h3>Actuate &amp; integrate</h3><p>Magnet–coil switching, pneumatic and hydraulic drive, and embedded electronics sized to the mechanism.</p><p class="tools">Drive circuits · PCB design · Embedded C · Verilog/FPGA · Hydraulics</p></li>
-          <li class="loop-step reveal"><span class="loop-no">04</span><h3>Measure &amp; model</h3><p>Force–displacement and force–gap tests, switching experiments and FEA tell a real principle apart from a one-off demo.</p><p class="tools">Mechanical testing · Abaqus · COMSOL · ANSYS · Python · PINNs</p></li>
-        </ol>
+        <div class="loop-wrap">
+          <ol class="loop">
+            <li class="loop-step reveal">
+              <span class="loop-badge" aria-hidden="true"><svg class="step-icon" viewBox="0 0 32 32"><g class="swing"><circle cx="16" cy="5.5" r="2.2"/><path d="M14.9 7.4 9.4 24.6M17.1 7.4l5.5 17.2M12 16.2h8"/></g><path class="hl draw" pathLength="1" d="M5 27Q16 20.5 27 27"/></svg></span>
+              <span class="loop-no">01</span>
+              <h3>Design the mechanism</h3>
+              <p>Let geometry, compliance and stable states do the controller’s work.</p>
+              <ul class="tool-chips"><li>SolidWorks</li><li>Inventor</li><li>MATLAB</li></ul>
+            </li>
+            <li class="loop-step reveal">
+              <span class="loop-badge" aria-hidden="true"><svg class="step-icon" viewBox="0 0 32 32"><rect x="10.5" y="3" width="11" height="7.5" rx="1.6"/><path d="M14 10.5 16 13l2-2.5"/><path class="hl draw" pathLength="1" d="M16 13v10"/><path class="hl spark" d="m13.6 21.2-2.6-1.8m7.4 1.8 2.6-1.8m-8.2 3H10"/><rect x="3.5" y="23" width="25" height="4.5" rx="1"/><path class="cut" d="M16 25.3h11"/></svg></span>
+              <span class="loop-no">02</span>
+              <h3>Fabricate to learn</h3>
+              <p>Fast build loops that expose what idealized models miss.</p>
+              <ul class="tool-chips"><li>Thermoforming</li><li>Laser cutting</li><li>3D printing</li><li>TPU bonding</li></ul>
+            </li>
+            <li class="loop-step reveal">
+              <span class="loop-badge" aria-hidden="true"><svg class="step-icon" viewBox="0 0 32 32"><rect class="hl-fill" x="11" y="4" width="5" height="6"/><rect x="11" y="4" width="10" height="6" rx="1.2"/><rect x="9" y="19" width="14" height="9" rx="2"/><path d="M12.5 19v9M16 19v9M19.5 19v9"/><path class="hl field" d="M11 8c-6 2-6 10-1.5 13M21 8c6 2 6 10 1.5 13"/></svg></span>
+              <span class="loop-no">03</span>
+              <h3>Actuate &amp; integrate</h3>
+              <p>Magnet–coil, fluidic drive and embedded electronics sized to the mechanism.</p>
+              <ul class="tool-chips"><li>PCB design</li><li>Embedded C</li><li>FPGA</li><li>Hydraulics</li></ul>
+            </li>
+            <li class="loop-step reveal">
+              <span class="loop-badge" aria-hidden="true"><svg class="step-icon" viewBox="0 0 32 32"><path d="M5 4v23h23"/><path class="zero" d="M5 18h23"/><path class="hl draw" pathLength="1" d="M5 18C6.5 8 9 6 11 10s3.5 8 5 9.5 5.5 5 9.5-1.5"/><circle class="hl-dot" cx="11" cy="10" r="1.9"/></svg></span>
+              <span class="loop-no">04</span>
+              <h3>Measure &amp; model</h3>
+              <p>Tests and FEA that separate a real principle from a one-off demo.</p>
+              <ul class="tool-chips"><li>Mechanical testing</li><li>Abaqus</li><li>COMSOL</li><li>Python</li></ul>
+            </li>
+          </ol>
+          <span class="loop-return" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3"/><path d="M18.2 2.8v4.6h-4.6"/></svg>repeat</span>
+        </div>
         <aside class="asks reveal" aria-label="Questions I ask first">
-          <p class="asks-label">The questions I now ask first</p>
-          <ul>
-            <li>Why is this mechanism necessary, and what capability does it unlock?</li>
-            <li>What is the bottleneck in existing approaches?</li>
-            <li>What measurement or model would tell a real principle apart from an isolated demonstration?</li>
+          <p class="asks-label">Questions I ask first</p>
+          <ul class="ask-grid">
+            <li><span class="ask-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8.5 11V7.5a3.5 3.5 0 0 1 6.8-1.2"/><path class="hl" d="M12 14.8v2.6"/></svg></span><p>Why is this mechanism necessary, and what does it unlock?</p></li>
+            <li><span class="ask-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16l-6 7.5V19l-4 1.5v-8Z"/><path class="hl" d="M7.5 8h9"/></svg></span><p>Where is the bottleneck in existing approaches?</p></li>
+            <li><span class="ask-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.3 15.3 4.7 4.7"/><path class="hl" d="M6.9 11.4c1.2-3 2.4-3 3.4 0s2.2 3 3.6 0"/></svg></span><p>What measurement or model proves a principle, not just a demo?</p></li>
           </ul>
         </aside>
       </div>
