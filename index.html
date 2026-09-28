@@ -1,128 +1,535 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#234c42">
-  <title>Xuanang Chen | Soft Robotics, Mechanics & Actuation</title>
-  <meta name="description" content="Xuanang Chen's research in soft robotics, bistable mechanisms, electromagnetic actuation, and integrated robotic systems. Explore prototypes, modeling, and experiments.">
+  <title>Xuanang Chen — Soft robotics, mechanical intelligence &amp; physical interaction</title>
+  <meta name="description" content="Xuanang Chen builds soft and multistable machines — bistable structures, soft actuators, rapid fabrication and electromagnetic actuation — for robots and interactive devices. Visiting Research Scholar, VAK Embodied Systems Lab, Northwestern University. Applying to Ph.D. programs for Fall 2027.">
+  <meta name="author" content="Xuanang Chen">
   <link rel="canonical" href="https://xuanangchen2029-stack.github.io/">
+  <meta name="theme-color" content="#F4F1EA" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0E1011" media="(prefers-color-scheme: dark)">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Xuanang Chen — Soft robotics, from materials to motion">
-  <meta property="og:description" content="Research connecting compliant structures, actuation, and electronics. Selected work in bistable modular robots and soft robotic systems.">
+  <meta property="og:site_name" content="Xuanang Chen">
+  <meta property="og:title" content="Xuanang Chen — Intelligence in the body, not only in the code">
+  <meta property="og:description" content="Soft and multistable machines: bistable structures, soft actuators, rapid fabrication and electromagnetic actuation for robots and interactive devices.">
   <meta property="og:url" content="https://xuanangchen2029-stack.github.io/">
-  <meta property="og:image" content="https://xuanangchen2029-stack.github.io/assets/research/beambot-three-unit.jpg">
+  <meta property="og:image" content="https://xuanangchen2029-stack.github.io/assets/media/og-beambot.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/newsreader-opsz.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-wght.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    (function () {
+      var d = document.documentElement, t = null;
+      d.classList.add('js');
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t === 'dark' || t === 'light') d.setAttribute('data-theme', t);
+      var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if ('IntersectionObserver' in window && !calm) {
+        d.classList.add('reveal-ready');
+        setTimeout(function () { if (!window.__siteReady) d.classList.remove('reveal-ready'); }, 2500);
+      }
+    })();
+  </script>
   <script src="assets/js/script.js" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Xuanang Chen",
+    "url": "https://xuanangchen2029-stack.github.io/",
+    "email": "mailto:xuanangchen2029@u.northwestern.edu",
+    "jobTitle": "Visiting Research Scholar",
+    "worksFor": { "@type": "Organization", "name": "VAK Embodied Systems Lab, Northwestern University" },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "Northwestern University" },
+      { "@type": "CollegeOrUniversity", "name": "University of Pennsylvania" },
+      { "@type": "CollegeOrUniversity", "name": "Beijing Jiaotong University" }
+    ],
+    "knowsAbout": ["Soft robotics", "Mechanical intelligence", "Bistable mechanisms", "Digital fabrication", "Electromagnetic actuation", "Physical human–computer interaction"],
+    "sameAs": ["https://github.com/xuanangchen2029-stack"]
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
   <header class="site-header">
-    <div class="container header-inner">
-      <a class="wordmark" href="#home" aria-label="Xuanang Chen, home"><span class="monogram" aria-hidden="true">xc.</span><span>Xuanang Chen</span></a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">+</span></button>
-      <nav id="main-nav" class="main-nav" aria-label="Main navigation">
-        <a href="#research">Research</a><a href="#approach">Approach</a><a href="#background">Background</a><a class="nav-contact" href="#contact">Let’s connect <span aria-hidden="true">↗</span></a>
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="Xuanang Chen, back to top">
+        <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><path class="arc-a" d="M6 30 Q24 6 42 30"/><path class="arc-b" d="M6 30 Q24 54 42 30"/><circle cx="6" cy="30" r="3.6"/><circle cx="42" cy="30" r="3.6"/></svg>
+        <span class="brand-name">Xuanang Chen</span>
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#background">Background</a>
+        <a href="#contact">Contact</a>
       </nav>
+      <div class="header-tools">
+        <button class="theme-toggle" type="button" aria-pressed="false" data-theme-toggle>
+          <span class="sr-only">Dark theme</span>
+          <svg viewBox="0 0 52 28" aria-hidden="true"><rect class="tt-track" x="1" y="1" width="50" height="26" rx="13"/><g class="tt-dome"><path d="M12 15 Q26 3 40 15"/></g><circle class="tt-pin" cx="12" cy="15" r="2.4"/><circle class="tt-pin" cx="40" cy="15" r="2.4"/></svg>
+        </button>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="sr-only">Menu</span><span class="menu-bars" aria-hidden="true"></span></button>
+      </div>
     </div>
   </header>
 
   <main id="main">
-    <section class="hero container" id="home" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Mechanics · Actuation · Control</p>
-        <h1 id="hero-title">Soft robotics,<br>from materials<br><em>to motion.</em></h1>
-        <p class="hero-intro">I’m <strong>Xuanang Chen</strong>. I explore how a robot’s physical structure, actuation, and electronics can work together to create adaptable behavior.</p>
-        <p class="hero-context">A background spanning mechatronics, electrical engineering, and mechanics. A research interest in embodied intelligence.</p>
-        <div class="hero-actions"><a class="button button-primary" href="#research">Explore my research <span aria-hidden="true">↘</span></a><a class="text-link" href="mailto:xuanangchen2029@u.northwestern.edu">Get in touch <span aria-hidden="true">↗</span></a></div>
-        <div class="hero-profile"><img src="assets/images/805f181f589fb986f31c8fa89a337e2.jpg" width="50" height="50" alt="Portrait of Xuanang Chen"><p><strong>Based in Evanston, Illinois</strong><span>Exploring Ph.D. research opportunities</span></p></div>
-      </div>
-      <figure class="hero-visual">
-        <div class="visual-label"><span>FROM MY WORKBENCH</span><span>01 / BEAMbot</span></div>
-        <img class="hero-robot" src="assets/research/beambot-three-unit.jpg" width="6048" height="4032" fetchpriority="high" alt="Three connected BEAMbot units with transparent compliant structures, copper coils, and wired connections">
-        <div class="photo-corner" aria-hidden="true">+</div>
-        <figcaption><span class="figure-kicker">Bistable electromagnetic modular robots</span><strong>Three units.<br>One modular platform.</strong><a href="#beambot" aria-label="Read about BEAMbot"><span aria-hidden="true">↗</span></a></figcaption>
-      </figure>
-    </section>
-
-    <div class="research-strip"><div class="container"><span class="eyebrow">The connecting thread</span><p>Material behavior <span aria-hidden="true">→</span> Mechanical design <span aria-hidden="true">→</span> Actuation <span aria-hidden="true">→</span> Robotic systems</p></div></div>
-
-    <section class="section container" id="research" aria-labelledby="research-title">
-      <div class="section-heading"><div><p class="eyebrow">01 / Selected research</p><h2 id="research-title">Ideas built.<br><em>Questions tested.</em></h2></div><p>I’m interested in the full path from a physical principle to a working robot—especially where mechanics can simplify actuation and control.</p></div>
-
-      <article class="featured-project" id="beambot">
-        <div class="featured-image"><img src="assets/research/beambot-bistable-unit.png" width="1980" height="1320" loading="lazy" alt="A transparent BEAMbot bistable unit mounted in an experimental fixture above an electromagnetic coil"><span class="image-note">Single-unit experimental prototype</span></div>
-        <div class="featured-copy">
-          <div class="project-meta"><span class="pill">Current research</span><span class="project-number">PROJECT 01</span></div>
-          <h3>BEAMbot</h3><p class="project-subtitle">Bistable mechanics meets electromagnetic actuation.</p>
-          <p>How can mechanical bistability and electromagnetic switching work together in modular robots? I’m developing compliant units and studying how structural geometry, magnetic placement, and drive signals shape their behavior.</p>
-          <ul class="research-contributions"><li>Laser-cut PETG mechanisms</li><li>Force–gap and electrical characterization</li><li>Multi-unit prototypes and drive-electronics development</li></ul>
-          <details class="project-details"><summary>Inside the research <span aria-hidden="true">+</span></summary><div><p><strong>The approach.</strong> Connect mechanical testing with coil characterization and switching experiments, then use that evidence to guide the next hardware iteration.</p><p><strong>What comes next.</strong> Flexible-coil integration, compact local electronics, and richer unit-level motion are directions under investigation. Autonomous assembly and decentralized robot behavior remain longer-term questions.</p><p class="small-note">Shown: wired prototypes used for mechanical and actuation experiments.</p></div></details>
-          <div class="tags"><span>Bistability</span><span>Electromagnetics</span><span>Hardware integration</span></div>
+    <!-- ───────────── Hero ───────────── -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-texture" aria-hidden="true"></div>
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="kicker reveal"><span class="kicker-dot" aria-hidden="true"></span>Soft robotics · Mechanical intelligence · Physical HCI</p>
+          <h1 id="hero-title" class="reveal"><span class="h1-line">Intelligence in the body,</span> <em class="h1-line">not only in the code.</em></h1>
+          <p class="lede reveal">I’m <strong>Xuanang Chen</strong>, a Visiting Research Scholar in the VAK Embodied Systems Lab at Northwestern University. I build soft and multistable machines, robots and interactive devices whose geometry, material response and mechanical states carry memory, timing and force, so the electronics only has to decide <em>where</em> and <em>when</em>.</p>
+          <div class="question reveal">
+            <p class="question-label">The question I’m pursuing</p>
+            <p class="question-text">What intelligence should remain in the body, and how should physical and computational intelligence be co-designed?</p>
+          </div>
+          <div class="hero-actions reveal">
+            <a class="btn btn-primary" href="#research">See the research <span aria-hidden="true">↓</span></a>
+            <a class="btn btn-ghost" href="mailto:xuanangchen2029@u.northwestern.edu">Email</a>
+            <a class="btn btn-ghost" href="https://github.com/xuanangchen2029-stack" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+          <p class="availability reveal"><span class="pulse" aria-hidden="true"></span>Applying to Ph.D. programs for Fall 2027</p>
         </div>
-      </article>
-
-      <div class="projects-toolbar"><h3 class="minor-heading">More work, connected by design.</h3><div class="filters" role="group" aria-label="Filter research projects"><button type="button" data-filter="all" aria-pressed="true">All work</button><button type="button" data-filter="actuation" aria-pressed="false">Soft actuation</button><button type="button" data-filter="modeling" aria-pressed="false">Modeling & design</button></div></div>
-      <p class="sr-only" id="filter-status" role="status" aria-live="polite"></p>
-      <div class="project-grid">
-        <article class="project-card" data-category="actuation">
-          <a class="card-image dark-image" href="https://youtu.be/6MpCrlE-lPk" target="_blank" rel="noopener noreferrer" aria-label="Watch the fabric pneumatic actuator demonstration on YouTube"><img src="assets/images/x.png" width="1059" height="657" loading="lazy" alt="Fabric pneumatic actuator fabrication, bending tests, and gripper integrated with a UAV"><span class="media-label">Watch demonstration ↗</span></a>
-          <div class="card-content"><p class="eyebrow">Soft actuation / System integration</p><h3>Fabric actuators<br>for aerial grasping</h3><p>Fabric-based pneumatic actuation explored through bending elements, gripper mechanisms, and integration with an aerial platform.</p><div class="tags"><span>Pneumatics</span><span>Prototyping</span><span>Grasping</span></div></div>
-        </article>
-        <article class="project-card" data-category="actuation">
-          <a class="card-image" href="https://youtube.com/shorts/gBOZ9D_PfUo" target="_blank" rel="noopener noreferrer" aria-label="Watch the hydraulic underwater gripper demonstration on YouTube"><img src="assets/images/team_meeting12.16_05.png" width="2108" height="1168" loading="lazy" alt="CAD assembly and physical prototype of a fabric hydraulic underwater gripper"><span class="media-label">Watch demonstration ↗</span></a>
-          <div class="card-content"><p class="eyebrow">Soft actuation / Mechanical systems</p><h3>Hydraulic soft grasping<br>at a larger scale</h3><p>A fabric-actuated underwater gripper, connecting actuator design with the mechanical architecture of a larger robotic system.</p><div class="tags"><span>Hydraulics</span><span>CAD to prototype</span><span>Underwater robotics</span></div></div>
-        </article>
-        <article class="project-card" data-category="actuation">
-          <a class="card-image video-image" href="https://www.youtube.com/watch?v=xsnB07efAQc" target="_blank" rel="noopener noreferrer" aria-label="Watch the cellulose hydrogel robotic actuator demonstration on YouTube"><img src="https://img.youtube.com/vi/xsnB07efAQc/hqdefault.jpg" width="480" height="360" loading="lazy" alt="Video preview of the cellulose hydrogel robotic actuator"><span class="media-label">Watch demonstration ↗</span></a>
-          <div class="card-content"><p class="eyebrow">Functional materials / Soft actuation</p><h3>Cellulose hydrogel<br>for robotic actuation</h3><p>Exploring biodegradable cellulose hydrogel films for pneumatic actuators and human–machine interaction.</p><div class="tags"><span>Functional materials</span><span>Pneumatic actuators</span></div></div>
-        </article>
-        <article class="project-card" data-category="modeling">
-          <a class="card-image video-image" href="https://www.youtube.com/watch?v=18Wbbdv85U4&amp;t=309s" target="_blank" rel="noopener noreferrer" aria-label="Watch the presentation on physics-informed inverse parameter identification"><img src="https://img.youtube.com/vi/18Wbbdv85U4/hqdefault.jpg" width="480" height="360" loading="lazy" alt="Video preview of a presentation on physics-informed modeling of a soft bending actuator"><span class="media-label">Watch presentation ↗</span></a>
-          <div class="card-content"><p class="eyebrow">Modeling / Soft robotics</p><h3>Learning parameters<br>with physical constraints</h3><p>Physics-informed neural networks for inverse parameter identification of a pneumatic soft bending actuator.</p><div class="tags"><span>PINNs</span><span>Inverse problems</span><span>Actuator modeling</span></div></div>
-        </article>
-        <article class="project-card" data-category="modeling">
-          <div class="card-image diagram-image"><img src="assets/images/x9.jpg" width="1820" height="879" loading="lazy" alt="Fractal-inspired cross-section geometries and computed bending configurations of a soft robot"></div>
-          <div class="card-content"><p class="eyebrow">Computational design / Geometry</p><h3>Geometry as<br>a design variable</h3><p>Computational exploration of fractal-inspired soft robots, connecting cross-sectional geometry with bending configurations.</p><details class="project-details"><summary>View the design figure <span aria-hidden="true">+</span></summary><div><a class="text-link" href="assets/images/x9.jpg" target="_blank" rel="noopener noreferrer">Open full-resolution figure ↗</a></div></details><div class="tags"><span>Computational mechanics</span><span>Geometric design</span></div></div>
-        </article>
-        <article class="project-card" data-category="modeling">
-          <div class="card-image diagram-image"><img src="assets/images/x1.png" width="654" height="491" loading="lazy" alt="Origami-inspired elephant-trunk manipulator prototypes and mechanical design"></div>
-          <div class="card-content"><p class="eyebrow">Origami / Mechanism design</p><h3>Folded structures,<br>adaptable motion</h3><p>An elephant-trunk-inspired origami manipulator, exploring how folding patterns translate into robotic mechanisms.</p><details class="project-details"><summary>View the prototype figure <span aria-hidden="true">+</span></summary><div><a class="text-link" href="assets/images/x1.png" target="_blank" rel="noopener noreferrer">Open full-resolution figure ↗</a></div></details><div class="tags"><span>Origami</span><span>Bio-inspired design</span></div></div>
-        </article>
+        <figure class="hero-figure reveal">
+          <div class="frame">
+            <img src="assets/media/beambot-hero-1200.webp" srcset="assets/media/beambot-hero-760.webp 760w, assets/media/beambot-hero-1200.webp 1200w" sizes="(max-width: 860px) 92vw, 38vw" width="1200" height="1500" fetchpriority="high" alt="Three BEAMbot modules seen from above on a black surface: clear PETG shells with copper coils at their centers, joined by a thin bridge and connected by wires.">
+            <span class="frame-tag">BEAMbot · 3 modules</span>
+            <span class="crop crop-tl" aria-hidden="true"></span><span class="crop crop-tr" aria-hidden="true"></span><span class="crop crop-bl" aria-hidden="true"></span><span class="crop crop-br" aria-hidden="true"></span>
+          </div>
+          <figcaption><span class="fig-no">Fig. 1</span>Three BEAMbot modules: vacuum-formed PETG shells, laser-cut flexures, magnets and copper coils. A wired prototype used for switching and locomotion experiments.</figcaption>
+        </figure>
       </div>
     </section>
 
-    <section class="approach-section" id="approach" aria-labelledby="approach-title"><div class="container section">
-      <div class="section-heading"><div><p class="eyebrow">02 / How I work</p><h2 id="approach-title">Across disciplines.<br><em>Grounded in experiments.</em></h2></div><p>My training bridges mechanical systems and electronics. I like research questions that require both—and a prototype that can put the model to the test.</p></div>
-      <div class="approach-grid">
-        <article><span class="step-number">01</span><h3>Design the mechanics</h3><p>Use geometry, material behavior, and compliant mechanisms to shape a robot’s motion.</p><p class="tool-line">CAD · Finite elements · Laser cutting · Rapid prototyping</p></article>
-        <article><span class="step-number">02</span><h3>Connect actuation & control</h3><p>Bring the mechanism together with its actuator, drive electronics, and control signals.</p><p class="tool-line">Electromagnetics · Pneumatics · Embedded programming · PCB design</p></article>
-        <article><span class="step-number">03</span><h3>Measure, then iterate</h3><p>Compare models with force, motion, and electrical measurements to decide what to change next.</p><p class="tool-line">Experimental characterization · MATLAB · Python · Data analysis</p></article>
+    <!-- ───────────── Recent ───────────── -->
+    <section class="updates" aria-labelledby="updates-title">
+      <div class="wrap updates-grid">
+        <h2 id="updates-title" class="label">Recent</h2>
+        <ol class="update-list">
+          <li><time datetime="2026-09">Sep 2026</time><p>The three-module BEAMbot now moves forward and turns left or right, depending only on which cells snap. <a href="#beambot">See the video</a></p></li>
+          <li><time datetime="2026-09">Sep 2026</time><p>The VAK Embodied Systems Lab published the BEAMbot project page. <a href="https://embodiedsystem.com/beambot/" target="_blank" rel="noopener noreferrer">View&nbsp;↗</a></p></li>
+          <li><time datetime="2026-08">Aug 2026</time><p>LeafBreath, a ~$50 leaf-resident photosynthesis sensor I helped design, is now on the lab website. <a href="https://embodiedsystem.com/photosynthesis-sensor/" target="_blank" rel="noopener noreferrer">View&nbsp;↗</a></p></li>
+          <li><time datetime="2026">2026</time><p>Our cellulose-hydrogel actuator paper (I am co-first author) is under major revision at <i>Science Advances</i>.</p></li>
+        </ol>
       </div>
-      <div class="research-question"><span class="eyebrow">A question I want to pursue</span><p>How much of a robot’s adaptability can we design into its body—and how should sensing and control build on it?</p></div>
-    </div></section>
+    </section>
 
-    <section class="section container" id="background" aria-labelledby="background-title">
-      <div class="section-heading"><div><p class="eyebrow">03 / Background</p><h2 id="background-title">Mechatronics.<br>Electronics. <em>Mechanics.</em></h2></div><p>Each stage of my training has added another way to think about the same problem: how to build better robotic systems.</p></div>
-      <div class="background-grid">
-        <div class="education"><h3 class="minor-heading">Education</h3>
-          <article class="education-item"><span class="education-date">2025 — 2026</span><div><h4>Northwestern University</h4><p>Master’s degree, Theoretical and Applied Mechanics</p></div></article>
-          <article class="education-item"><span class="education-date">2022 — 2024</span><div><h4>University of Pennsylvania</h4><p>M.S.E., Electrical Engineering</p></div></article>
-          <article class="education-item"><span class="education-date">2018 — 2022</span><div><h4>Beijing Jiaotong University</h4><p>B.Eng., Mechatronics Engineering</p></div></article>
-          <article class="education-item"><span class="education-date">2021 — 2022</span><div><h4>National University of Singapore,<br>Suzhou Research Institute</h4><p>Exchange year · Mechanical engineering coursework and final-year project</p></div></article>
+    <!-- ───────────── Threads ───────────── -->
+    <section class="section threads" aria-labelledby="threads-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Research directions</p>
+          <h2 id="threads-title">Four threads, one question.</h2>
         </div>
-        <aside class="about-card"><img src="assets/images/805f181f589fb986f31c8fa89a337e2.jpg" alt="Xuanang Chen" width="642" height="924" loading="lazy"><div><p class="eyebrow">Away from the workbench</p><h3>A lifelong<br>habit of tinkering.</h3><p>I grew up on a small island in Zhejiang, China. Building models and taking apart toy cars gradually became an interest in how machines move—and how to make them move differently.</p><p>Outside research: basketball, movies, and a good book.</p></div></aside>
+        <ol class="thread-grid">
+          <li class="thread reveal">
+            <span class="thread-no">01</span>
+            <svg class="thread-icon" viewBox="0 0 64 40" aria-hidden="true"><path d="M6 28 Q32 2 58 28"/><path class="ghost" d="M6 28 Q32 54 58 28"/><circle cx="6" cy="28" r="3"/><circle cx="58" cy="28" r="3"/></svg>
+            <h3>Mechanical intelligence</h3>
+            <p>Bistability, snap-through and folding as ways to store state, release energy and sequence motion without continuous power.</p>
+            <p class="thread-links"><a href="#beambot">BEAMbot</a> · <a href="#leafbreath">LeafBreath</a> · <a href="#origami">Origami trunk</a></p>
+          </li>
+          <li class="thread reveal">
+            <span class="thread-no">02</span>
+            <svg class="thread-icon" viewBox="0 0 64 40" aria-hidden="true"><path d="M8 32 C8 10 24 6 32 6 S56 10 56 32"/><path class="ghost" d="M16 32 C16 18 26 14 32 14 S48 18 48 32"/><path d="M4 32h56"/></svg>
+            <h3>Soft &amp; sustainable actuation</h3>
+            <p>Fabric composites and biodegradable hydrogels whose material response decides what a soft robot can do, from 10&nbsp;MPa deep-sea grasping to degradable grippers.</p>
+            <p class="thread-links"><a href="#hydrogel">Hydrogel actuators</a> · <a href="#deepsea">Deep-sea gripper</a></p>
+          </li>
+          <li class="thread reveal">
+            <span class="thread-no">03</span>
+            <svg class="thread-icon" viewBox="0 0 64 40" aria-hidden="true"><path d="M6 32 L20 32 Q32 8 44 32 L58 32"/><path class="ghost" d="M26 20 l4 4 M34 20 l-4 4"/><path class="dash" d="M4 36h56"/></svg>
+            <h3>Fabrication as a design tool</h3>
+            <p>Vacuum forming, post-form laser cutting and heat bonding used to turn thin shells and coated textiles into programmable mechanisms.</p>
+            <p class="thread-links"><a href="#leafbreath">LeafBreath</a> · <a href="#beambot">BEAMbot</a></p>
+          </li>
+          <li class="thread reveal">
+            <span class="thread-no">04</span>
+            <svg class="thread-icon" viewBox="0 0 64 40" aria-hidden="true"><path d="M32 36 C18 30 12 18 20 6 C30 10 36 20 32 36Z"/><path class="ghost" d="M32 36 C40 26 50 22 58 24"/><circle cx="58" cy="24" r="3"/></svg>
+            <h3>Human–environment interaction</h3>
+            <p>Instruments that make living processes perceptible, and machines meant to touch people, plants and ecosystems safely.</p>
+            <p class="thread-links"><a href="#leafbreath">LeafBreath</a> · <a href="#hydrogel">Degradable grippers</a></p>
+          </li>
+        </ol>
       </div>
-      <div class="manuscripts"><div class="subsection-heading"><h3 class="minor-heading">Research manuscripts</h3></div>
-        <article class="manuscript"><span class="publication-year">2025</span><div><h4>Development of a Degradable, High-Toughness, and Flexible Pneumatic Actuator Based on Cellulose Hydrogel and Its Applications</h4><p>Pingdong Wei, <strong>Xuanang Chen</strong>, Zhuang Zhang, Hanqing Jiang</p><p class="publication-status">Submitted to <i>Science Advances</i></p></div></article>
-        <article class="manuscript"><span class="publication-year">2025</span><div><h4>Intelligent Origami: From Foldable Structures to Delicate Robots and Devices</h4><p><strong>Xuanang Chen</strong>, Zhuang Zhang, Pingdong Wei, Hanqing Jiang</p><p class="publication-status">Submitted to <i>Advanced Materials</i></p></div></article>
-      </div>
-      <details class="additional-work"><summary>Earlier projects & coursework <span aria-hidden="true">+</span></summary><div><p>Additional work includes the MEAM5200 robotics course project, bio-inspired robotics coursework, a campus-patrol quadruped project, and the 36th Beijing college students’ physics competition.</p><a class="text-link" href="assets/images/MEAM520_FINAL_PROJECT.jpg" target="_blank" rel="noopener noreferrer">View MEAM5200 project illustration ↗</a></div></details>
     </section>
 
-    <section class="contact-section" id="contact" aria-labelledby="contact-title"><div class="container contact-inner"><div><p class="eyebrow">04 / Let’s connect</p><h2 id="contact-title">Good research starts<br>with <em>a conversation.</em></h2><p>I’m interested in Ph.D. opportunities in robotics, soft robotics, and embodied intelligence—especially research connecting physical design with actuation and control.</p></div><div class="contact-actions"><a class="button button-light" href="mailto:xuanangchen2029@u.northwestern.edu">Email Xuanang <span aria-hidden="true">↗</span></a><a class="email-address" href="mailto:xuanangchen2029@u.northwestern.edu">xuanangchen2029@u.northwestern.edu</a><button class="copy-email" type="button" data-copy-email hidden>Copy email address <span aria-hidden="true">⧉</span></button><span class="copy-status" role="status" aria-live="polite"></span><a class="github-link" href="https://github.com/xuanangchen2029-stack" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div></section>
+    <!-- ───────────── Research ───────────── -->
+    <section class="section research" id="research" aria-labelledby="research-title">
+      <div class="wrap">
+        <div class="section-head split">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-no">01</span>Selected research</p>
+            <h2 id="research-title">From a physical property to a working&nbsp;system.</h2>
+          </div>
+          <p class="section-note">Each project starts from a snap, a fold or a material trade-off and follows it into a robot or an instrument. For every team project I say what my own part was.</p>
+        </div>
+
+        <!-- BEAMbot -->
+        <article class="feature" id="beambot" aria-labelledby="beambot-title">
+          <div class="feature-media reveal">
+            <figure class="player" data-loop-player>
+              <figcaption class="sr-only">Looping clip, top view at four times speed: a three-module BEAMbot turns on a dark surface.</figcaption>
+              <video class="player-video" muted loop playsinline preload="none" poster="assets/media/beambot-loop-poster.webp" width="1280" height="720">
+                <source src="assets/video/beambot-turning-loop.mp4" type="video/mp4">
+                <source src="assets/video/beambot-turning-loop.webm" type="video/webm">
+              </video>
+              <span class="player-tag">Top view · 4× speed</span>
+              <button class="player-toggle" type="button" data-loop-toggle aria-pressed="false"><span data-loop-label>Play loop</span></button>
+            </figure>
+            <div class="media-actions">
+              <a class="btn btn-primary" href="assets/video/beambot-progress.mp4" data-lightbox-video="assets/video/beambot-progress.mp4" data-webm="assets/video/beambot-progress.webm" data-poster="assets/media/beambot-progress-poster.webp" data-title="BEAMbot: three-module locomotion. Progress video, 42 s, with captions">
+                <svg class="play-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>Watch the 42-second progress video
+              </a>
+              <a class="text-link" href="https://youtu.be/oRYp7wiIOJY" data-lightbox-youtube="oRYp7wiIOJY" data-title="BEAMbot: lab video">Lab video</a>
+              <a class="text-link" href="https://embodiedsystem.com/beambot/" target="_blank" rel="noopener noreferrer">Project page&nbsp;↗</a>
+            </div>
+            <div class="thumbs">
+              <button class="thumb" type="button" data-lightbox-image="assets/media/beambot-cell-1400.webp" data-title="A single BEAMbot cell in the test fixture, above its electromagnetic coil."><img src="assets/media/beambot-cell-1400.webp" width="1400" height="933" loading="lazy" alt="A single transparent BEAMbot cell mounted in a white test fixture above a coil"><span>Single cell</span></button>
+              <button class="thumb" type="button" data-lightbox-image="assets/media/beambot-three-1400.webp" data-title="Three-module BEAMbot prototype."><img src="assets/media/beambot-three-1400.webp" width="1400" height="933" loading="lazy" alt="Three BEAMbot modules joined together, seen from above"><span>Three modules</span></button>
+              <button class="thumb thumb-paper" type="button" data-lightbox-image="assets/media/beambot-force-displacement-1600.webp" data-title="Baseline force–displacement response of a cell (H = 10 mm, ρ = 50, t = 0.3 mm PETG). Stroke 19.0 ± 0.6 mm. Bold: representative set and reset curves; faint: other runs (n = 9)."><img src="assets/media/beambot-force-displacement-1600.webp" width="1600" height="1183" loading="lazy" alt="Force–displacement plot of a bistable cell, showing a positive set peak, an unstable equilibrium, and a negative reset region"><span>Force–displacement</span></button>
+            </div>
+          </div>
+          <div class="feature-body">
+            <div class="meta-row reveal"><span class="chip chip-accent">Current</span><span class="meta">VAK Embodied Systems Lab · Northwestern</span></div>
+            <h3 id="beambot-title" class="feature-title reveal">BEAMbot</h3>
+            <p class="feature-sub reveal">Bistable Electromagnetically Actuated Modular robots</p>
+            <blockquote class="pull reveal"><p>How much controllable locomotion can emerge when electronics selects where and when bistable cells snap?</p></blockquote>
+            <p class="reveal">Each cell is a vacuum-formed PETG shell with laser-cut flexures, permanent magnets, a coil and a mechanical stop. Its geometry sets the force response. Bistability stores the state and elastic energy without holding current, and a short pulse triggers the snap. Across modules, the choice of which cells snap and when turns discrete states into whole-body motion. The tethered three-module robot moves forward and turns this way.</p>
+            <dl class="metrics reveal">
+              <div class="metric"><dt>Stroke</dt><dd class="metric-value">19.0<small>± 0.6 mm</small></dd><dd class="metric-note">10-mm shell, 0.3-mm PETG</dd></div>
+              <div class="metric"><dt>Set / reset force</dt><dd class="metric-value">0.54<span class="slash">/</span>0.27<small>N</small></dd><dd class="metric-note">mean ± SD, 3 specimens × 3 cycles</dd></div>
+              <div class="metric"><dt>Jump clearance</dt><dd class="metric-value">22<small>mm</small></dd><dd class="metric-note">electrically triggered; 35-mm hub rise</dd></div>
+              <div class="metric"><dt>Gaits</dt><dd class="metric-value">3</dd><dd class="metric-note">forward, left and right turns, all from actuation timing</dd></div>
+            </dl>
+            <p class="role reveal"><span class="role-label">My role</span>I developed the thermoforming and post-form laser-cutting process for the curved bistable cells. I also worked on magnet–coil switching, built single- and multi-module prototypes and their drive electronics, and ran the mechanical and switching characterization.</p>
+            <details class="disclosure reveal">
+              <summary>Open questions<span class="disclosure-icon" aria-hidden="true"></span></summary>
+              <ul class="question-list">
+                <li><strong>How can shape program mechanics?</strong> Calibrated FEA and repeated mechanical tests will link dome shape, flexure pattern and crease condition to the stable states and actuation requirements.</li>
+                <li><strong>How do arrangement and timing compose motion?</strong> Placement, orientation, activation order and phase will be varied to find repeatable translation and turning.</li>
+                <li><strong>How can actuation get lighter?</strong> Off-center magnets and multilayer flexible-PCB coils will be weighed against switching force, pulse energy, heating and mass, working toward untethered modules.</li>
+                <li><strong>How can modules change capability?</strong> Interchangeable mechanical cells and electronic “lids” could allow local control with shared power.</li>
+              </ul>
+            </details>
+            <p class="credits reveal">With Paul Ducarme and Lucia Stein-Montalvo · PI: Nivedita Arora · <span class="chip">Manuscript in preparation</span></p>
+          </div>
+        </article>
+
+        <!-- Interactive snap-through explorer -->
+        <section class="snap-lab reveal" aria-labelledby="snap-title" data-snap-lab>
+          <div class="snap-copy">
+            <p class="eyebrow">Try it · measured curve</p>
+            <h3 id="snap-title">Push a cell over its energy barrier.</h3>
+            <p>Drag the shell or use the slider. Let go before the unstable point and it springs back. Push past it and the cell snaps into its second state, where it stays with no power. The curve is traced from our baseline test (H = 10&nbsp;mm, t = 0.3&nbsp;mm PETG).</p>
+            <div class="snap-readout">
+              <div><span>δ</span><output data-snap-d>0.0</output><small>mm</small></div>
+              <div><span>F</span><output data-snap-f>0.00</output><small>N</small></div>
+              <div><span>State</span><output data-snap-state>1</output></div>
+            </div>
+            <div class="snap-controls">
+              <label class="sr-only" for="snap-range">Apex displacement in millimetres</label>
+              <input type="range" id="snap-range" min="0" max="19" step="0.1" value="0" data-snap-range>
+              <button class="btn btn-small btn-ghost" type="button" data-snap-pulse>Pulse the coil</button>
+            </div>
+            <p class="fineprint">From 7.6 to 12.3&nbsp;mm the curve is interpolated, because a pushing probe cannot hold the shell there. The shell drawing is schematic, not to scale.</p>
+            <p class="sr-only" role="status" aria-live="polite" data-snap-announce></p>
+          </div>
+          <div class="snap-figures">
+            <svg class="snap-shell" viewBox="0 0 300 200" role="img" aria-label="Cross-section of a bistable shell above its coil. Drag the shell to push it." data-snap-shell>
+              <path class="ghost-state" d="M50 100 Q150 -4 250 100"/>
+              <path class="ghost-state" d="M50 100 Q150 204 250 100"/>
+              <rect class="support" x="28" y="94" width="26" height="14" rx="2"/>
+              <rect class="support" x="246" y="94" width="26" height="14" rx="2"/>
+              <path class="shell" data-shell-path d="M50 100 Q150 -4 250 100"/>
+              <g data-magnet><rect class="magnet" x="138" y="43" width="24" height="10" rx="2"/></g>
+              <g class="coil" data-coil>
+                <rect class="coil-body" x="126" y="172" width="48" height="18" rx="3"/>
+                <path class="coil-wind" d="M131 175v12M137 175v12M143 175v12M149 175v12M155 175v12M161 175v12M167 175v12"/>
+              </g>
+              <circle class="handle" data-shell-handle cx="150" cy="48" r="9"/>
+              <text class="svg-label" x="286" y="60" text-anchor="end">state 1</text>
+              <text class="svg-label" x="286" y="150" text-anchor="end">state 2</text>
+            </svg>
+            <svg class="snap-plot" viewBox="0 0 420 250" role="img" aria-label="Force versus apex displacement, with the current point marked" data-snap-plot></svg>
+          </div>
+        </section>
+
+        <!-- LeafBreath -->
+        <article class="feature feature-reverse" id="leafbreath" aria-labelledby="leafbreath-title">
+          <div class="feature-body">
+            <div class="meta-row reveal"><span class="chip chip-leaf">Instrument</span><span class="meta">VAK Embodied Systems Lab · Northwestern</span></div>
+            <h3 id="leafbreath-title" class="feature-title reveal">LeafBreath</h3>
+            <p class="feature-sub reveal">A ~$50, leaf-resident instrument that makes photosynthesis observable</p>
+            <p class="reveal">Research-grade gas-exchange analyzers cost tens of thousands of dollars and need an operator to hold a cuvette on one leaf at a time. LeafBreath instead seals a small thermoformed chamber onto an intact leaf and measures how fast the leaf changes the air inside. Net assimilation and transpiration both come from the CO₂ and humidity slopes. With no pump, scrubbers or gas supply, it can stay on one leaf for days.</p>
+            <p class="result reveal">Early records run for 5 to 13 days on C3, CAM and facultative-CAM species. A comparison against a research-grade reference instrument is under way.</p>
+            <p class="role reveal"><span class="role-label">My role</span>Mechanical design of the transparent, airtight chamber and a low-power lid mechanism. I then asked whether the switch itself could be thermoformed PETG. It could: a magnet-triggered bistable flexure that holds its state without power. That mechanism grew into BEAMbot.</p>
+            <p class="credits reveal">With Qitong Li, Julia Wang, Dayanara Chavez, Raj Dave and Cassandra Marquez · PI: Nivedita Arora · <a class="text-link" href="https://embodiedsystem.com/photosynthesis-sensor/" target="_blank" rel="noopener noreferrer">Project page&nbsp;↗</a></p>
+          </div>
+          <div class="feature-media reveal">
+            <div class="iterations">
+              <p class="iterations-title">Four fabrication iterations for the chamber</p>
+              <ol>
+                <li class="it it-fail"><span class="it-mark" aria-hidden="true">✕</span><div><strong>Resin casting</strong><span>Clear, but demolding was unreliable</span></div></li>
+                <li class="it it-fail"><span class="it-mark" aria-hidden="true">✕</span><div><strong>Direct PETG printing</strong><span>Easy to make, but optically hazy</span></div></li>
+                <li class="it it-ok"><span class="it-mark" aria-hidden="true">✓</span><div><strong>Vacuum forming</strong><span>Thin, clear, light shells from reusable 3D-printed molds; the idea came from food packaging</span></div></li>
+                <li class="it it-next"><span class="it-mark" aria-hidden="true">→</span><div><strong>Post-form laser cutting</strong><span>Released flexures on a curved shell give a bistable switch, and led to BEAMbot</span></div></li>
+              </ol>
+              <svg class="iterations-art" viewBox="0 0 360 120" aria-hidden="true">
+                <path class="leaf" d="M18 92 C60 40 128 30 190 58 C150 92 80 108 18 92Z"/>
+                <path class="leaf-vein" d="M24 90 C80 70 130 62 184 60"/>
+                <path class="chamber" d="M92 66 C104 30 176 30 188 66"/>
+                <path class="chamber-base" d="M86 66 H194"/>
+                <circle class="co2" cx="128" cy="50" r="3"/><circle class="co2" cx="146" cy="42" r="2.4"/><circle class="co2" cx="162" cy="52" r="2"/>
+                <path class="bistable" d="M232 70 Q280 30 328 70"/>
+                <path class="bistable ghost" d="M232 70 Q280 110 328 70"/>
+                <text x="280" y="108" text-anchor="middle">bistable switch</text>
+                <text x="140" y="114" text-anchor="middle">sealed leaf chamber</text>
+              </svg>
+            </div>
+          </div>
+        </article>
+
+        <!-- Other research -->
+        <div class="more-head">
+          <h3 class="minor-heading">Earlier research</h3>
+          <div class="filters" role="group" aria-label="Filter earlier research">
+            <button type="button" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" data-filter="actuation" aria-pressed="false">Soft actuation</button>
+            <button type="button" data-filter="modeling" aria-pressed="false">Modeling &amp; design</button>
+            <button type="button" data-filter="fabrication" aria-pressed="false">Fabrication</button>
+          </div>
+        </div>
+        <p class="sr-only" role="status" aria-live="polite" data-filter-status></p>
+
+        <div class="card-grid">
+          <article class="card reveal" id="hydrogel" data-category="actuation fabrication">
+            <a class="card-media is-video" href="https://www.youtube.com/watch?v=xsnB07efAQc" data-lightbox-youtube="xsnB07efAQc" data-title="Cellulose-hydrogel pneumatic actuator and gripper" aria-label="Play the cellulose-hydrogel actuator video">
+              <img src="https://img.youtube.com/vi/xsnB07efAQc/hqdefault.jpg" width="480" height="360" loading="lazy" alt="Video still of the cellulose-hydrogel pneumatic actuator">
+              <span class="play-badge" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z"/></svg></span>
+            </a>
+            <div class="card-body">
+              <p class="card-meta">Westlake University · 2024–25</p>
+              <h4>Biodegradable cellulose-hydrogel actuators</h4>
+              <p>This cellulose film looks like PET, but its mechanics change with crosslinking and regeneration. By tuning how it is prepared, we made pneumatic chambers that deform at low pressure yet stay robust under higher loads, and that can degrade after use.</p>
+              <p class="card-role"><span>My role</span>I designed and prototyped the gripper, modeled its multimodal kinematics, and integrated the mechanics with electrical control for system-level tests.</p>
+              <p class="card-status"><span class="chip chip-accent">Co-first author</span><span>Major revision, <i>Science Advances</i></span></p>
+            </div>
+          </article>
+
+          <article class="card reveal" id="deepsea" data-category="actuation fabrication">
+            <a class="card-media" href="https://youtube.com/shorts/gBOZ9D_PfUo" data-lightbox-youtube="gBOZ9D_PfUo" data-title="Fabric hydraulic soft gripper, underwater tests" aria-label="Play the deep-sea gripper video">
+              <img src="assets/media/deepsea-gripper-1400.webp" width="1400" height="776" loading="lazy" alt="CAD assembly and physical prototype of a four-finger fabric hydraulic gripper">
+              <span class="play-badge" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z"/></svg></span>
+            </a>
+            <div class="card-body">
+              <p class="card-meta">Westlake University · 2023–24</p>
+              <h4>Fabric hydraulic actuators for the deep sea</h4>
+              <p>TPU-coated fabric gives up extreme strain in exchange for pressure tolerance and load capacity. The 1.2-m, four-finger arm kept a stable deformation at 10&nbsp;MPa of simulated hydrostatic pressure while handling heavy objects. A hydraulic winding mechanism let its length adapt from about 0.5 to 1.2&nbsp;m.</p>
+              <p class="card-role"><span>My role</span>I designed the 1.2-m fabric chamber and reworked how the actuators were fabricated, cutting production time by about a third and improving airtightness. I also designed the hydraulic drive and winding mechanism and ran the underwater and high-pressure grasping tests.</p>
+              <p class="card-links"><a class="text-link" href="https://youtu.be/6MpCrlE-lPk" data-lightbox-youtube="6MpCrlE-lPk" data-title="Fabric pneumatic gripper for aerial grasping">An earlier fabric gripper for aerial grasping</a></p>
+            </div>
+          </article>
+
+          <article class="card reveal" id="origami" data-category="modeling fabrication">
+            <button class="card-media card-media-paper" type="button" data-lightbox-image="assets/media/origami-trunk.webp" data-title="Origami elephant-trunk manipulator: prototypes, tracking marker and actuation mechanism." aria-label="Enlarge the origami manipulator figure">
+              <img src="assets/media/origami-trunk.webp" width="654" height="491" loading="lazy" alt="Origami elephant-trunk manipulator prototypes with the actuation mechanism">
+            </button>
+            <div class="card-body">
+              <p class="card-meta">NUS (Suzhou) Research Institute · 2021–22</p>
+              <h4>An origami manipulator that curls like an elephant trunk</h4>
+              <p>A single-degree-of-freedom origami arm. I searched crease parameters for the largest reachable range with kinematics I wrote in MATLAB. The prototype then showed what the model had left out: PLA panels, TPU-coated fabric joints heat-pressed above 180&nbsp;°C, joint clearance, and motor torque against fatigue.</p>
+              <p class="card-role"><span>My role</span>My final-year project. I did the kinematics and optimization, the prototype, and the actuation and control electronics.</p>
+            </div>
+          </article>
+
+          <article class="card card-compact reveal" data-category="modeling">
+            <a class="card-media is-video" href="https://www.youtube.com/watch?v=18Wbbdv85U4&amp;t=309s" data-lightbox-youtube="18Wbbdv85U4" data-start="309" data-title="Physics-informed inverse parameter identification of a soft bending actuator" aria-label="Play the presentation on physics-informed parameter identification">
+              <img src="https://img.youtube.com/vi/18Wbbdv85U4/hqdefault.jpg" width="480" height="360" loading="lazy" alt="Video still of a presentation on physics-informed neural networks">
+              <span class="play-badge" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z"/></svg></span>
+            </a>
+            <div class="card-body">
+              <p class="card-meta">Modeling study</p>
+              <h4>Learning actuator parameters under physical constraints</h4>
+              <p>Physics-informed neural networks for inverse identification of the parameters of a pneumatic soft bending actuator.</p>
+            </div>
+          </article>
+
+          <article class="card card-compact reveal" data-category="modeling">
+            <button class="card-media card-media-paper" type="button" data-lightbox-image="assets/media/fractal-design-1400.webp" data-title="Fractal-inspired cross-sections and computed bending configurations." aria-label="Enlarge the fractal-inspired design figure">
+              <img src="assets/media/fractal-design-1400.webp" width="1400" height="676" loading="lazy" alt="Fractal-inspired cross-section geometries and computed bending configurations of a soft robot">
+            </button>
+            <div class="card-body">
+              <p class="card-meta">Computational design</p>
+              <h4>Geometry as a design variable</h4>
+              <p>A computational study of fractal-inspired soft robots that relates cross-section geometry to bending configuration.</p>
+            </div>
+          </article>
+        </div>
+
+        <details class="disclosure earlier reveal">
+          <summary>Undergraduate projects and coursework<span class="disclosure-icon" aria-hidden="true"></span></summary>
+          <ul class="earlier-list">
+            <li><button type="button" aria-label="Enlarge photo: quadruped robot for campus patrol" data-lightbox-image="assets/media/quadruped-800.webp" data-title="Quadruped robot for campus patrol."><img src="assets/media/quadruped-800.webp" width="800" height="639" loading="lazy" alt=""></button><div><strong>Quadruped robot for campus patrol</strong><span>National College Student Innovation Training Project, Beijing Jiaotong University. Group leader.</span></div></li>
+            <li><button type="button" aria-label="Enlarge figure: MEAM 5200 final project" data-lightbox-image="assets/media/meam5200-800.webp" data-title="MEAM 5200 final project: robot-arm manipulation in simulation."><img src="assets/media/meam5200-800.webp" width="800" height="419" loading="lazy" alt=""></button><div><strong>MEAM 5200 final project</strong><span>Robot-arm manipulation, University of Pennsylvania</span></div></li>
+            <li><button type="button" aria-label="Enlarge figure: bio-inspired robotics coursework" data-lightbox-image="assets/media/bioinspired-800.webp" data-title="Bio-inspired robotics coursework."><img src="assets/media/bioinspired-800.webp" width="800" height="463" loading="lazy" alt=""></button><div><strong>Bio-inspired robotics</strong><span>Coursework on bio-inspired actuators, sensors and computation</span></div></li>
+            <li><span class="earlier-dot" aria-hidden="true"></span><div><strong>36th College Students’ Physics Competition (Beijing region)</strong><span>Provincial-level third prize</span></div></li>
+          </ul>
+        </details>
+      </div>
+    </section>
+
+    <!-- ───────────── Publications ───────────── -->
+    <section class="section pubs" id="publications" aria-labelledby="pubs-title">
+      <div class="wrap">
+        <div class="section-head split">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-no">02</span>Publications &amp; manuscripts</p>
+            <h2 id="pubs-title">Work in the record.</h2>
+          </div>
+          <p class="section-note">Statuses as of September 2026. A dagger (†) marks equal contribution.</p>
+        </div>
+        <ol class="pub-list">
+          <li class="pub reveal">
+            <div class="pub-side"><span class="chip chip-accent">Major revision</span><span class="pub-venue"><i>Science Advances</i></span></div>
+            <div class="pub-main">
+              <h3>Development of a Degradable, High-Toughness, and Flexible Pneumatic Actuator Based on Cellulose Hydrogel and Its Applications</h3>
+              <p class="authors">Pingdong Wei<sup>†</sup>, <strong>Xuanang Chen</strong><sup>†</sup>, Zhuang Zhang, Hanqing Jiang</p>
+              <p class="pub-note">My part: gripper design, prototyping and system-level validation.</p>
+              <p class="pub-links"><a href="https://www.youtube.com/watch?v=xsnB07efAQc" data-lightbox-youtube="xsnB07efAQc" data-title="Cellulose-hydrogel pneumatic actuator and gripper">Video</a></p>
+            </div>
+          </li>
+          <li class="pub reveal">
+            <div class="pub-side"><span class="chip">In preparation</span><span class="pub-venue">Manuscript</span></div>
+            <div class="pub-main">
+              <h3>Manuscript on BEAMbot, covering bistable mechanics, electromagnetic switching and modular locomotion</h3>
+              <p class="authors">VAK Embodied Systems Lab, Northwestern University. Team: Paul Ducarme, <strong>Xuanang Chen</strong>, Lucia Stein-Montalvo; PI: Nivedita Arora</p>
+              <p class="pub-links"><a href="https://embodiedsystem.com/beambot/" target="_blank" rel="noopener noreferrer">Project page ↗</a> <a href="#beambot">Progress video</a></p>
+            </div>
+          </li>
+          <li class="pub reveal">
+            <div class="pub-side"><span class="chip">In preparation</span><span class="pub-venue">Review</span></div>
+            <div class="pub-main">
+              <h3>Intelligent Origami: From Foldable Structures to Delicate Robots and Devices</h3>
+              <p class="authors"><strong>Xuanang Chen</strong>, Zhuang Zhang, Pingdong Wei, Hanqing Jiang</p>
+              <p class="pub-note">My part: I drafted the manuscript.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ───────────── Approach ───────────── -->
+    <section class="section approach" id="approach" aria-labelledby="approach-title">
+      <div class="wrap">
+        <div class="section-head split">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-no">03</span>How I work</p>
+            <h2 id="approach-title">Design, fabricate, measure, then ask why it&nbsp;works.</h2>
+          </div>
+          <p class="section-note">My training runs from mechatronics through electrical engineering to mechanics. Each project uses all of it, in a loop.</p>
+        </div>
+        <ol class="loop">
+          <li class="loop-step reveal"><span class="loop-no">01</span><h3>Design the mechanism</h3><p>I choose geometry, compliance and stable states so the body does work that a controller would otherwise have to do.</p><p class="tools">SolidWorks · Inventor · MATLAB kinematics &amp; optimization</p></li>
+          <li class="loop-step reveal"><span class="loop-no">02</span><h3>Fabricate to learn</h3><p>Vacuum forming, laser cutting, heat bonding, 3D printing and casting give fast loops that expose what idealized models leave out.</p><p class="tools">Thermoforming · Laser cutting · FDM &amp; resin printing · TPU-fabric bonding</p></li>
+          <li class="loop-step reveal"><span class="loop-no">03</span><h3>Actuate &amp; integrate</h3><p>Magnet–coil switching, pneumatic and hydraulic drive, and embedded electronics sized to the mechanism.</p><p class="tools">Drive circuits · PCB design · Embedded C · Verilog/FPGA · Hydraulics</p></li>
+          <li class="loop-step reveal"><span class="loop-no">04</span><h3>Measure &amp; model</h3><p>Force–displacement and force–gap tests, switching experiments and FEA tell a real principle apart from a one-off demo.</p><p class="tools">Mechanical testing · Abaqus · COMSOL · ANSYS · Python · PINNs</p></li>
+        </ol>
+        <aside class="asks reveal" aria-label="Questions I ask first">
+          <p class="asks-label">The questions I now ask first</p>
+          <ul>
+            <li>Why is this mechanism necessary, and what capability does it unlock?</li>
+            <li>What is the bottleneck in existing approaches?</li>
+            <li>What measurement or model would tell a real principle apart from an isolated demonstration?</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ───────────── Background ───────────── -->
+    <section class="section background" id="background" aria-labelledby="background-title">
+      <div class="wrap">
+        <div class="section-head split">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-no">04</span>Background</p>
+            <h2 id="background-title">A non-linear path, taken on&nbsp;purpose.</h2>
+          </div>
+          <p class="section-note">Mechatronics taught me to integrate, electrical engineering to drive and sense, Westlake that materials decide what a robot can be, and mechanics to reason from first principles. The VAK Lab is where all four meet.</p>
+        </div>
+        <div class="bg-grid">
+          <ol class="timeline">
+            <li class="tl reveal tl-now"><span class="tl-when">Now</span><div><h3>Visiting Research Scholar</h3><p>VAK Embodied Systems Lab, Northwestern University, with Prof. Nivedita Arora</p><p class="tl-what">BEAMbot · LeafBreath</p></div></li>
+            <li class="tl reveal"><span class="tl-when">2025–26</span><div><h3>Northwestern University</h3><p>Master’s degree, Theoretical and Applied Mechanics</p></div></li>
+            <li class="tl reveal"><span class="tl-when">2024–25</span><div><h3>Westlake University</h3><p>Research Assistant with Prof. Hanqing Jiang</p><p class="tl-what">Cellulose-hydrogel pneumatic actuators and grippers</p></div></li>
+            <li class="tl reveal"><span class="tl-when">2023–24</span><div><h3>Westlake University</h3><p>Summer research with Prof. Hanqing Jiang</p><p class="tl-what">Fabric hydraulic actuators for deep-sea grasping</p></div></li>
+            <li class="tl reveal"><span class="tl-when">2022–24</span><div><h3>University of Pennsylvania</h3><p>M.S.E., Electrical Engineering</p></div></li>
+            <li class="tl reveal"><span class="tl-when">2021–22</span><div><h3>NUS (Suzhou) Research Institute</h3><p>Exchange year and final-year project on origami manipulators</p></div></li>
+            <li class="tl reveal"><span class="tl-when">2018–22</span><div><h3>Beijing Jiaotong University</h3><p>B.Eng., Mechatronic Engineering</p></div></li>
+          </ol>
+          <aside class="about reveal" aria-label="About me">
+            <img src="assets/media/portrait-600.webp" width="600" height="864" loading="lazy" alt="Portrait of Xuanang Chen">
+            <div>
+              <p class="eyebrow">Away from the bench</p>
+              <p>I grew up on a small island in Zhejiang, China, building models and taking apart toy cars to see how they moved.</p>
+              <p>Outside the lab I play basketball, watch films and read.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────── Contact ───────────── -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap contact-grid">
+        <div class="contact-copy">
+          <p class="eyebrow"><span class="eyebrow-no">05</span>Contact</p>
+          <h2 id="contact-title">Let’s talk about soft, multistable and interactive&nbsp;machines.</h2>
+          <p>I’m applying to Ph.D. programs for Fall 2027. I’m glad to hear from faculty and students working on mechanical intelligence, soft robotics, digital fabrication and physical interaction.</p>
+        </div>
+        <div class="contact-card">
+          <p class="contact-label">Email</p>
+          <a class="contact-email" href="mailto:xuanangchen2029@u.northwestern.edu">xuanangchen2029@<wbr>u.northwestern.edu</a>
+          <div class="contact-row">
+            <button class="btn btn-small btn-invert" type="button" data-copy-email hidden>Copy address</button>
+            <span class="copy-status" role="status" aria-live="polite" data-copy-status></span>
+          </div>
+          <ul class="contact-links">
+            <li><a href="https://github.com/xuanangchen2029-stack" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></li>
+            <li><a href="https://embodiedsystem.com/beambot/" target="_blank" rel="noopener noreferrer">BEAMbot project page <span aria-hidden="true">↗</span></a></li>
+            <li><a href="https://embodiedsystem.com/photosynthesis-sensor/" target="_blank" rel="noopener noreferrer">LeafBreath project page <span aria-hidden="true">↗</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
   </main>
-  <footer class="container site-footer"><p>© <span data-year>2026</span> Xuanang Chen</p><p>Curious about how things move.</p><a href="#home">Back to top ↑</a></footer>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>© <span data-year>2026</span> Xuanang Chen</p>
+      <p>Last updated September 2026</p>
+      <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
+
+  <dialog class="lightbox" data-lightbox aria-labelledby="lightbox-title">
+    <div class="lightbox-panel">
+      <div class="lightbox-head">
+        <p id="lightbox-title" class="lightbox-title" data-lightbox-title></p>
+        <button class="lightbox-close" type="button" data-lightbox-close aria-label="Close"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg></button>
+      </div>
+      <div class="lightbox-body" data-lightbox-body></div>
+    </div>
+  </dialog>
 </body>
 </html>

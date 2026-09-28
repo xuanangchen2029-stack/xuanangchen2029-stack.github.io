@@ -1,41 +1,48 @@
-# Xuanang Chen — Research Portfolio
+# Xuanang Chen — Research Website
 
-A static research website for GitHub Pages. No build step, package manager, or backend is required.
+Static research website for GitHub Pages. No build step, package manager or backend.
+Live at https://xuanangchen2029-stack.github.io/
 
 ## Preview locally
 
-Run `python -m http.server 8769 --bind 127.0.0.1` in this directory, then open `http://127.0.0.1:8769/`.
-Opening `index.html` directly also works; clipboard copying is available only in secure contexts such as HTTPS and localhost.
+Run `python -m http.server 8769 --bind 127.0.0.1` in this folder, then open `http://127.0.0.1:8769/`.
+Opening `index.html` directly also works. The copy-email button only appears on HTTPS or localhost.
 
-## Edit the site
+## Files
 
-- `index.html`: biography, education, project text, manuscript status, links and photo captions.
-- `assets/css/style.css`: colors, layouts, typography and responsive/print styles.
-- `assets/js/script.js`: accessible mobile menu, project filtering, copy-email action and current-section indication.
-- `assets/research/`: BEAMbot images, copied without altering the originals.
-- `assets/images/`: existing portrait and project media. Unused template assets remain in the repository to avoid deleting original files.
+- `index.html`: all page content (hero, recent updates, research threads, projects, publications, approach, background, contact).
+- `assets/css/style.css`: design tokens (light and dark), layout, responsive and print styles.
+- `assets/js/script.js`: theme switch, mobile menu, scroll progress and section highlighting, reveal on scroll, project filters, copy email, looping teaser, video/figure lightbox, and the snap-through explorer.
+- `assets/fonts/`: self-hosted Newsreader, Inter and IBM Plex Mono (SIL Open Font License; license files included).
+- `assets/media/`: optimized WebP images and posters used by the page (originals remain in `assets/research/` and `assets/images/`).
+- `assets/video/`: `beambot-progress.*` (42-s captioned progress video) and `beambot-turning-loop.*` (8-s muted loop), each as MP4 (H.264) with a WebM (VP9) fallback.
 
-The email appears in several mailto links and in the copy-email action. Update both HTML and JavaScript if the address changes. No contact form is used because this static site has no email-submission backend.
+## Interactions
 
-Project categories use `data-category="actuation"` or `data-category="modeling"`. With JavaScript disabled, all projects and the navigation remain available. Details use native HTML disclosure controls. The site respects reduced-motion preferences and provides keyboard focus and a skip link.
+- **Bistable theme switch** (header): the dome snaps between two stable states for light/dark. It follows the system theme until the visitor chooses; the choice is kept in `localStorage`.
+- **Snap-through explorer** (under BEAMbot): drag the shell or use the slider; the curve is traced from the baseline force–displacement test (H = 10 mm, t = 0.3 mm PETG) and is interpolated between 7.6 and 12.3 mm. The data points live in `initSnapLab()` in `script.js`.
+- **Lightbox**: elements with `data-lightbox-video`, `data-lightbox-youtube` or `data-lightbox-image` open in a dialog; without JavaScript the links still work.
+- **Filters**: cards use `data-category` with space-separated values (`actuation`, `modeling`, `fabrication`).
+- Motion respects `prefers-reduced-motion`; the loop video does not autoplay for those visitors.
 
-## Content notes
+## Content notes (as of September 2026)
 
-The Northwestern entry reads `2025–2026 · Master’s degree, Theoretical and Applied Mechanics`, reflecting the completed master's qualification. Confirm the official degree abbreviation before changing it to M.S. or M.S.E. The application focus remains Ph.D. opportunities in robotics, soft robotics and embodied intelligence.
+- Hydrogel paper: co-first author (†), major revision at *Science Advances*. BEAMbot manuscript and the origami review: in preparation. Update the chips in the Publications section and the "Recent" list when a status changes.
+- Current role: Visiting Research Scholar, VAK Embodied Systems Lab, Northwestern (PI: Nivedita Arora). BEAMbot and LeafBreath link to the lab's project pages.
+- BEAMbot numbers (stroke, set/reset force, jump clearance) come from the public lab project page.
+- No CV link yet. To add one, put the PDF in `assets/` and add a button next to "Email" in the hero and in the contact card.
 
-The two manuscripts retain the original website's `Submitted to` text and 2025 dates. Update these when their status changes; no accepted/published status has been inferred.
+## Updating the progress video
 
-BEAMbot photos show wired experimental prototypes. Flexible-coil integration and decentralized robot behavior are described as future research directions.
+Replace the files in `assets/video/` using the same names, then regenerate the posters in `assets/media/`. Example web encodes:
 
-Do not add a CV, Scholar, paper DOI or project-repository button until its real destination is available. Do not replace manuscript status with a stronger claim without confirmation.
+```
+ffmpeg -i master.mp4 -vf scale=1280:720 -c:v libx264 -crf 25 -preset slow -pix_fmt yuv420p -movflags +faststart -an assets/video/beambot-progress.mp4
+ffmpeg -i master.mp4 -vf scale=1280:720 -c:v libvpx-vp9 -b:v 0 -crf 36 -row-mt 1 -an assets/video/beambot-progress.webm
+```
 
-## Publish with GitHub Pages
+## Publishing
 
-Repository: `xuanangchen2029-stack/xuanangchen2029-stack.github.io`.
-Public URL: https://xuanangchen2029-stack.github.io/
+GitHub Pages serves the repository root on `main`. Push to `main` and check the Pages deployment. Keep relative paths intact; updating only `index.html` would drop styles, scripts, fonts and media.
 
-GitHub Pages publishes the repository root on `main`. Preview changes locally, then commit and push them to `main` directly or merge a reviewed branch into `main`. Check the Pages deployment before treating the public site as updated.
-
-Keep the relative file paths intact when copying or uploading the site. Updating only `index.html` will omit its stylesheet, script and BEAMbot images.
-
-The original template license is preserved in `LICENSE`. Existing YouTube links and their preview images remain externally hosted.
+The original template license is kept in `LICENSE`.
