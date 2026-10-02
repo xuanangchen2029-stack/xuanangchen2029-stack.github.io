@@ -15,7 +15,7 @@ Opening `index.html` directly also works. The copy-email button only appears on 
 - `assets/js/script.js`: theme switch, mobile menu, scroll progress and section highlighting, reveal on scroll, project filters, copy email, looping teaser, video/figure lightbox, and the snap-through explorer.
 - `assets/fonts/`: self-hosted Newsreader, Inter and IBM Plex Mono (SIL Open Font License; license files included).
 - `assets/media/`: optimized WebP images and posters used by the page (originals remain in `assets/research/` and `assets/images/`). `og-card.jpg` is the 1200×630 link-preview card.
-- `assets/video/`: `beambot-progress.*` (1:41 captioned project video with an original music bed and sound effects, no narration; replaced the 42-s progress video on 2026-10-02) and `beambot-turning-loop.*` (8-s muted loop), each as MP4 (H.264) with a WebM (VP9) fallback. The page links them with `?v=20261002`; bump it when a file changes.
+- `assets/video/`: `beambot-progress.*` (1:41 captioned project video with an original music bed and sound effects, no narration; replaced the 42-s progress video on 2026-10-02) and `beambot-unit-loop.*` (12-s muted loop cut from the same project video's render: exploded view, reassembly and state switching; replaced the 8-s turning-test loop on 2026-10-02), each as MP4 (H.264) with a WebM (VP9) fallback. The page links them with `?v=20261002`; bump it when a file changes.
 
 ## Interactions
 
