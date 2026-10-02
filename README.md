@@ -15,7 +15,7 @@ Opening `index.html` directly also works. The copy-email button only appears on 
 - `assets/js/script.js`: theme switch, mobile menu, scroll progress and section highlighting, reveal on scroll, project filters, copy email, looping teaser, video/figure lightbox, and the snap-through explorer.
 - `assets/fonts/`: self-hosted Newsreader, Inter and IBM Plex Mono (SIL Open Font License; license files included).
 - `assets/media/`: optimized WebP images and posters used by the page (originals remain in `assets/research/` and `assets/images/`). `og-card.jpg` is the 1200×630 link-preview card.
-- `assets/video/`: `beambot-progress.*` (42-s captioned progress video) and `beambot-turning-loop.*` (8-s muted loop), each as MP4 (H.264) with a WebM (VP9) fallback.
+- `assets/video/`: `beambot-progress.*` (1:41 captioned project video with an original music bed and sound effects, no narration; replaced the 42-s progress video on 2026-10-02) and `beambot-turning-loop.*` (8-s muted loop), each as MP4 (H.264) with a WebM (VP9) fallback. The page links them with `?v=20261002`; bump it when a file changes.
 
 ## Interactions
 
@@ -33,13 +33,13 @@ Opening `index.html` directly also works. The copy-email button only appears on 
 - Fig. 1 (hero) and the "Three modules" thumbnail are graded frames from the turning-test video (about 16.5 s and 40.4 s into `3unit_left&right_2X.mp4`), chosen so all three modules are sharp and centered.
 - No CV link yet. To add one, put the PDF in `assets/` and add a button next to "Email" in the hero and in the contact card.
 
-## Updating the progress video
+## Updating the project video
 
-Replace the files in `assets/video/` using the same names, then regenerate the posters in `assets/media/`. Example web encodes:
+Replace the files in `assets/video/` using the same names, regenerate `assets/media/beambot-progress-poster.webp`, and bump the `?v=` value on the four links in the BEAMbot section. Example web encodes (the current video has a stereo music track; use `-an` instead of the audio options for a silent clip):
 
 ```
-ffmpeg -i master.mp4 -vf scale=1280:720 -c:v libx264 -crf 25 -preset slow -pix_fmt yuv420p -movflags +faststart -an assets/video/beambot-progress.mp4
-ffmpeg -i master.mp4 -vf scale=1280:720 -c:v libvpx-vp9 -b:v 0 -crf 36 -row-mt 1 -an assets/video/beambot-progress.webm
+ffmpeg -i master.mp4 -vf scale=1280:720 -c:v libx264 -crf 25 -preset slow -pix_fmt yuv420p -c:a aac -b:a 128k -movflags +faststart assets/video/beambot-progress.mp4
+ffmpeg -i master.mp4 -vf scale=1280:720 -c:v libvpx-vp9 -b:v 0 -crf 36 -row-mt 1 -c:a libopus -b:a 96k assets/video/beambot-progress.webm
 ```
 
 ## Publishing
