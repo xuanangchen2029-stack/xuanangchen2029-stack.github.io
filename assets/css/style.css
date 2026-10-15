@@ -327,6 +327,19 @@ html:not(.js) .snap-lab { display: none; }
 .it-ok .it-mark { background: var(--leaf-soft); color: var(--leaf); }
 .it-next { border-bottom: 0; }
 .it-next .it-mark { background: var(--accent-soft); color: var(--accent-ink); }
+.figure-float { margin: 0 0 4px; }
+.figure-button { display: block; width: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; }
+.figure-button img { display: block; width: 100%; height: auto; }
+.figure-button .theme-dark { display: none; }
+:root[data-theme="dark"] .figure-button .theme-light { display: none; }
+:root[data-theme="dark"] .figure-button .theme-dark { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .figure-button .theme-light { display: none; }
+  :root:not([data-theme="light"]) .figure-button .theme-dark { display: block; }
+}
+.figure-caption { margin: 10px 0 0; font: 500 11px/1.5 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.media-note { font: 500 12px/1.4 var(--mono); letter-spacing: .04em; color: var(--ink-3); }
+#leafbreath .iterations { margin-top: 20px; }
 .iterations-art { display: block; width: 100%; height: auto; margin-top: 12px; }
 .iterations-art .leaf { fill: var(--leaf-soft); stroke: var(--leaf); stroke-width: 1.5; }
 .iterations-art .leaf-vein { fill: none; stroke: var(--leaf); stroke-width: 1; opacity: .7; }

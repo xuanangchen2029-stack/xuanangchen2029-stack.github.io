@@ -238,7 +238,7 @@
         img.src = imageLink.dataset.lightboxImage;
         img.alt = imageLink.dataset.title || '';
         img.decoding = 'async';
-        const paper = imageLink.classList.contains('thumb-paper') || imageLink.classList.contains('card-media-paper');
+        const paper = imageLink.classList.contains('thumb-paper') || imageLink.classList.contains('card-media-paper') || imageLink.hasAttribute('data-lightbox-paper');
         open(img, imageLink.dataset.title, paper);
       }
     });
