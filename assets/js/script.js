@@ -188,21 +188,61 @@
   if (dialog && typeof dialog.showModal === 'function') {
     const body = dialog.querySelector('[data-lightbox-body]');
     const title = dialog.querySelector('[data-lightbox-title]');
+    const counter = dialog.querySelector('[data-lightbox-count]');
     let lastFocus = null;
+    let group = [];
+    let groupIndex = 0;
     const open = (node, label, paper) => {
-      lastFocus = document.activeElement;
+      if (!dialog.open) lastFocus = document.activeElement;
       body.replaceChildren(node);
       body.classList.toggle('is-paper', Boolean(paper));
       title.textContent = label || '';
+      dialog.classList.toggle('is-gallery', group.length > 1);
       pauseLoop();
-      dialog.showModal();
+      if (!dialog.open) dialog.showModal();
+    };
+    const imageFor = (link) => {
+      const img = new Image();
+      img.src = link.dataset.lightboxImage;
+      img.alt = link.dataset.alt || (link.querySelector('img') && link.querySelector('img').alt) || link.dataset.title || '';
+      img.decoding = 'async';
+      return img;
+    };
+    const showGroupItem = (i) => {
+      const n = group.length;
+      groupIndex = (i + n) % n;
+      const link = group[groupIndex];
+      if (counter) counter.textContent = `${groupIndex + 1} / ${n}`;
+      open(imageFor(link), link.dataset.title);
+      [groupIndex + 1, groupIndex - 1].forEach((j) => { const next = group[(j + n) % n]; if (next) new Image().src = next.dataset.lightboxImage; });
     };
     dialog.addEventListener('close', () => {
       body.replaceChildren();
+      group = [];
+      dialog.classList.remove('is-gallery');
       if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
     });
     dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
     dialog.querySelector('[data-lightbox-close]').addEventListener('click', () => dialog.close());
+    const prev = dialog.querySelector('[data-lightbox-prev]');
+    const next = dialog.querySelector('[data-lightbox-next]');
+    if (prev) prev.addEventListener('click', () => { if (group.length > 1) showGroupItem(groupIndex - 1); });
+    if (next) next.addEventListener('click', () => { if (group.length > 1) showGroupItem(groupIndex + 1); });
+    dialog.addEventListener('keydown', (e) => {
+      if (group.length < 2) return;
+      if (e.key === 'ArrowLeft') { e.preventDefault(); showGroupItem(groupIndex - 1); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); showGroupItem(groupIndex + 1); }
+    });
+    let swipeX = null;
+    let swipeY = null;
+    body.addEventListener('pointerdown', (e) => { swipeX = e.clientX; swipeY = e.clientY; });
+    body.addEventListener('pointerup', (e) => {
+      if (group.length < 2 || swipeX === null) return;
+      const dx = e.clientX - swipeX;
+      const dy = e.clientY - swipeY;
+      swipeX = null;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) showGroupItem(groupIndex + (dx < 0 ? 1 : -1));
+    });
 
     document.addEventListener('click', (e) => {
       if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
@@ -211,6 +251,7 @@
       const imageLink = e.target.closest('[data-lightbox-image]');
       if (videoLink) {
         e.preventDefault();
+        group = [];
         const v = document.createElement('video');
         v.controls = true; v.autoplay = true; v.playsInline = true; v.preload = 'auto';
         [[videoLink.dataset.lightboxVideo, 'video/mp4'], [videoLink.dataset.webm, 'video/webm']].forEach(([src, type]) => {
@@ -224,6 +265,7 @@
         open(v, videoLink.dataset.title);
       } else if (ytLink) {
         e.preventDefault();
+        group = [];
         const f = document.createElement('iframe');
         const start = ytLink.dataset.start ? `&start=${encodeURIComponent(ytLink.dataset.start)}` : '';
         f.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(ytLink.dataset.lightboxYoutube)}?autoplay=1&rel=0&modestbranding=1${start}`;
@@ -234,10 +276,15 @@
         open(f, ytLink.dataset.title);
       } else if (imageLink) {
         e.preventDefault();
-        const img = new Image();
-        img.src = imageLink.dataset.lightboxImage;
+        const set = imageLink.dataset.gallery;
+        if (set) {
+          group = [...document.querySelectorAll('[data-gallery]')].filter((el) => el.dataset.gallery === set);
+          showGroupItem(Math.max(0, group.indexOf(imageLink)));
+          return;
+        }
+        group = [];
+        const img = imageFor(imageLink);
         img.alt = imageLink.dataset.title || '';
-        img.decoding = 'async';
         const paper = imageLink.classList.contains('thumb-paper') || imageLink.classList.contains('card-media-paper') || imageLink.hasAttribute('data-lightbox-paper');
         open(img, imageLink.dataset.title, paper);
       }

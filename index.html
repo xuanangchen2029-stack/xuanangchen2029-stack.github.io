@@ -22,7 +22,7 @@
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/newsreader-opsz.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/inter-wght.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/style.css?v=20261014">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261018">
   <script>
     (function () {
       var d = document.documentElement, t = null;
@@ -36,7 +36,8 @@
       }
     })();
   </script>
-  <script src="assets/js/script.js?v=20261014" defer></script>
+  <script src="assets/js/script.js?v=20261018" defer></script>
+  <script src="assets/js/visits.js?v=20261018" data-endpoint="https://xc-visits.xuanangchen2029.workers.dev/p" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -70,6 +71,7 @@
         <a href="#research">Research</a>
         <a href="#publications">Publications</a>
         <a href="#background">Background</a>
+        <a href="#gallery" data-gallery-nav>Gallery</a>
         <a href="#contact">Contact</a>
       </nav>
       <div class="header-tools">
@@ -508,11 +510,50 @@
       </div>
     </section>
 
+    <!-- ───────────── Gallery ───────────── -->
+    <section class="section gallery" id="gallery" aria-labelledby="gallery-title">
+      <div class="wrap">
+        <div class="section-head split">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-no">05</span>Gallery</p>
+            <h2 id="gallery-title">Showing the work in&nbsp;person.</h2>
+          </div>
+          <p class="section-note">Conferences, posters and talks, newest first. Select a photo to enlarge it.</p>
+        </div>
+        <ol class="moments">
+<!-- gallery:start -->
+          <li class="moment reveal" id="moment-mfg-2026">
+            <div class="moment-text">
+              <p class="moment-meta"><time datetime="2026-10">Oct 2026</time><span class="chip">Presentation</span></p>
+              <h3>National Manufacturing Day at Northwestern</h3>
+              <p class="moment-place">VAK Embodied Systems Lab, Northwestern University · Evanston, IL</p>
+              <p>Our lab opened its doors for National Manufacturing Day. I presented how we make bistable structures, from vacuum-formed PETG shells to post-form laser cutting, and the robots and sensors built from them.</p>
+            </div>
+            <div class="moment-photos" data-count="1">
+              <button class="shot" type="button" data-lightbox-image="assets/gallery/mfg-2026-1-1600.webp" data-gallery="mfg-2026" data-title="Manufacturing Day 2026 · Presenting BEAMbot at the lab’s open house" aria-label="Enlarge photo 1 of 1: Presenting BEAMbot at the lab’s open house" style="--ar: 800 / 600"><img src="assets/gallery/mfg-2026-1-800.webp" srcset="assets/gallery/mfg-2026-1-800.webp 800w, assets/gallery/mfg-2026-1-1600.webp 1536w" sizes="(max-width: 960px) 92vw, 52vw" width="800" height="600" loading="lazy" decoding="async" alt="Xuanang Chen holds a wired BEAMbot module as he presents in the lab; a large screen beside him plays an animation of the module."></button>
+            </div>
+          </li>
+          <li class="moment reveal" id="moment-softrobotics-2024">
+            <div class="moment-text">
+              <p class="moment-meta"><time datetime="2024-11">Nov 2024</time><span class="chip">Poster</span></p>
+              <h3>9th Soft Robotics Conference</h3>
+              <p class="moment-place">Tsinghua University · Beijing, China</p>
+              <p>Poster on biodegradable cellulose origami as the basis for a sustainable, closed-loop robot system, presented with my team from Westlake University.</p>
+            </div>
+            <div class="moment-photos" data-count="1">
+              <button class="shot" type="button" data-lightbox-image="assets/gallery/softrobotics-2024-1-1600.webp" data-gallery="softrobotics-2024" data-title="Soft Robotics 2024 · With our poster on biodegradable cellulose origami" aria-label="Enlarge photo 1 of 1: With our poster on biodegradable cellulose origami" style="--ar: 317 / 489"><img src="assets/gallery/softrobotics-2024-1-800.webp" srcset="assets/gallery/softrobotics-2024-1-800.webp 317w" sizes="(max-width: 960px) 92vw, 52vw" width="317" height="489" loading="lazy" decoding="async" alt="Xuanang Chen stands beside his team’s poster at the 9th Soft Robotics Conference; its Chinese title reads “Sustainable closed-loop robot systems from biodegradable cellulose origami”."></button>
+            </div>
+          </li>
+<!-- gallery:end -->
+        </ol>
+      </div>
+    </section>
+
     <!-- ───────────── Contact ───────────── -->
     <section class="contact" id="contact" aria-labelledby="contact-title">
       <div class="wrap contact-grid">
         <div class="contact-copy">
-          <p class="eyebrow"><span class="eyebrow-no">05</span>Contact</p>
+          <p class="eyebrow"><span class="eyebrow-no">06</span>Contact</p>
           <h2 id="contact-title">Let’s talk about soft, multistable and interactive&nbsp;machines.</h2>
           <p>I’m applying to Ph.D. programs for Fall 2027. I’m glad to hear from faculty and students working on mechanical intelligence, soft robotics, digital fabrication and physical interaction.</p>
         </div>
@@ -539,13 +580,19 @@
       <p>Last updated October 2026</p>
       <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
     </div>
+    <p class="wrap footer-note" data-privacy-note>Privacy: this site keeps a simple visit log (time, page, referring site, IP address and approximate location) to see how people find it. No cookies or cross-site tracking; entries are deleted after 90 days.</p>
   </footer>
 
   <dialog class="lightbox" data-lightbox aria-labelledby="lightbox-title">
     <div class="lightbox-panel">
       <div class="lightbox-head">
         <p id="lightbox-title" class="lightbox-title" data-lightbox-title></p>
-        <button class="lightbox-close" type="button" data-lightbox-close aria-label="Close"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg></button>
+        <div class="lightbox-tools">
+          <button class="lightbox-btn lightbox-nav" type="button" data-lightbox-prev aria-label="Previous photo"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button>
+          <span class="lightbox-count" data-lightbox-count aria-live="polite"></span>
+          <button class="lightbox-btn lightbox-nav" type="button" data-lightbox-next aria-label="Next photo"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></button>
+          <button class="lightbox-btn lightbox-close" type="button" data-lightbox-close aria-label="Close" autofocus><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg></button>
+        </div>
       </div>
       <div class="lightbox-body" data-lightbox-body></div>
     </div>
